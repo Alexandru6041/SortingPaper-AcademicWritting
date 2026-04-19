@@ -8,7 +8,7 @@ SRCS = $(wildcard src/core/*.c) $(wildcard src/algorithms_array/*.c) $(wildcard 
 all: setup $(TARGET)
 
 setup:
-	mkdir -p output
+	mkdir output
 
 $(TARGET): $(SRCS)
 	$(CC) $(CFLAGS) $(SRCS) -o $(TARGET)

@@ -64,8 +64,8 @@ int* generate_random_int_array(int size, Type Array_type) {
     }
 
         if(Array_type == ALMOST_SORTED) {
-            ///Swap 2% of the elements in the array
-            int swaps = size * (2.00 / 100);
+            ///10% of the elements in the array
+            int swaps = size * (10.00 / 100);
             for(int i = 0; i < swaps; i++){
                 int index1 = rand() % size;
                 int index2 = rand() % size;
