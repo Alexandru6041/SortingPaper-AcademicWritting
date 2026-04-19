@@ -15,30 +15,51 @@ static double stop_timer(clock_t start_time) {
 }
 
 void run_array_benchmark(const char* algorithm_name, void (*sort_function)(int*, int), int *array, int size){
-    int* test_array = copy_int_array(array, size);
-    printf("%-15s | ", algorithm_name); 
+    printf("%-15s | ", algorithm_name);
+    int iterations = 1;
 
-    
+    if(size <= 10 || size <= 100)
+        iterations = 10000;
+    else if(size > 100 || size <= 1000)
+        iterations = 1000;
+   
     clock_t start = start_timer();
+    for(int i = 0; i < iterations; i++) {
+        int* test_array = copy_int_array(array, size);
+        
+        sort_function(test_array, size);
+        
+        free(test_array);
+    }
+    
 
-    sort_function(test_array, size);
     double total_time = stop_timer(start);
     
     printf("%.6f seconds\n", total_time);
-    free(test_array);
 }
 
-void run_list_benchmark(const char* algorithm_name, void (*sort_func)(Node**), Node* master_list) {
-    printf("%-15s | ", algorithm_name); 
-    
-    Node* test_list = copy_list(master_list);
-    if(test_list == NULL && master_list != NULL) 
-        return;
-    
+void run_list_benchmark(const char* algorithm_name, void (*sort_func)(Node**), Node* master_list, int size) {
+    int iterations = 1;
+
+    if(size <= 10 || size <= 100)
+        iterations = 10000;
+    else if(size > 100 || size <= 1000)
+        iterations = 1000;
+
+    printf("%-15s | ", algorithm_name);
     clock_t start = start_timer();
-    sort_func(&test_list);
+    
+   for(int i = 0; i < iterations; i++) {
+        Node* test_list = copy_list(master_list);
+        if(test_list == NULL && master_list != NULL) 
+            continue;
+
+        sort_func(&test_list);
+        
+        free_list(test_list);
+    }
+    
     double total_time = stop_timer(start);
     
     printf("%.6f seconds\n", total_time);
-    free_list(test_list);
 }
