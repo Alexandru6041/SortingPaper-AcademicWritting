@@ -8,7 +8,7 @@
 #define COLOR_GREEN "\x1b[32m"
 #define NORMAL_COLOR "\x1b[0m"
 
-static const int SIZES[] = {10, 20};
+static const int SIZES[] = {10, 100, 1000, 10000};
 static const int number_sizes = sizeof(SIZES) / sizeof(SIZES[0]);
 
 #endif

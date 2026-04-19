@@ -27,7 +27,6 @@ int main() {
 
             printf(YELLOW "\n\nARRAYS\n" NORMAL_COLOR);
 
-
             run_array_benchmark("Merge Sort", merge_sort, master_array, current_size);
             run_array_benchmark("Quick Sort", quick_sort, master_array, current_size);
             run_array_benchmark("Heap Sort", heap_sort, master_array, current_size);
@@ -57,7 +56,7 @@ int main() {
         printf("\n\n\n|==================================================|\n\n\n");
     }
 
-    printf("\n" COLOR_GREEN "Teste finalizate!" COLOR_GREEN "\n");
+    printf("\n" COLOR_GREEN "Teste finalizate!" NORMAL_COLOR "\n");
 
     return 0;
 }
