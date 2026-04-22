@@ -1,0 +1,14 @@
+#ifndef VARIABLES
+#define VARIABLES
+#include <time.h>
+
+#define STANDARD_SEPARATOR "==="
+#define COLOR_RED "\x1b[31m"
+#define YELLOW "\x1b[33m"
+#define COLOR_GREEN "\x1b[32m"
+#define NORMAL_COLOR "\x1b[0m"
+
+static const int SIZES[] = {10, 100, 1000, 10000, 100000, 1000000, 10000000, 50000000, 100000000, 500000000};
+static const int number_sizes = sizeof(SIZES) / sizeof(SIZES[0]);
+
+#endif
