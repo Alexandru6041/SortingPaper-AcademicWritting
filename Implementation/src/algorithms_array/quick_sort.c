@@ -1,42 +1,37 @@
 #include "sort_array.h"
 
-static void swap(int *a, int *b){
+static void swap(int *a, int *b) {
     int temp = *a;
     *a = *b;
     *b = temp;
 }
 
-/// moving all the numbers smaller than the pivot to the left and all the numbers greater than the pivot to the right
-static int partition(int *arr, int low, int high){
-    int mid = low + (high - low) / 2;
-    swap(&arr[mid], &arr[high]);
+static void quick_sort_recursive(int *arr, int low, int high) {
+    if (low < high) {
+        int mid = low + (high - low) / 2;
+        int pivot = arr[mid];
 
-    int pivot = arr[high];
-    int i = low - 1;
-    for(int j = low; j <= high; j++){
-        if(arr[j] < pivot){
-            i++;
-            swap(&arr[i], &arr[j]);
+        int lt = low;   // Zona elementelor < pivot
+        int i = low;    // Zona elementelor == pivot
+        int gt = high;  // Zona elementelor > pivot
+
+        while (i <= gt) {
+            if (arr[i] < pivot) {
+                swap(&arr[lt++], &arr[i++]);
+            } else if (arr[i] > pivot) {
+                swap(&arr[i], &arr[gt--]);
+            } else {
+                i++;
+            }
         }
-    }
 
-    swap(&arr[i + 1], &arr[high]);
-    return i + 1;
+        quick_sort_recursive(arr, low, lt - 1);
+        quick_sort_recursive(arr, gt + 1, high);
+    }
 }
 
-static void quick_sort_recursive(int *arr, int low, int high){
-    if(low < high){
-        int pi = partition(arr, low, high);
-
-        quick_sort_recursive(arr, low, pi - 1);
-        quick_sort_recursive(arr, pi + 1, high);
-    }
-
-}
-
-void quick_sort(int *arr, int size){
-    if(size > 1){
+void quick_sort(int *arr, int size) {
+    if (size > 1) {
         quick_sort_recursive(arr, 0, size - 1);
     }
 }
-

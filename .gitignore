@@ -7,3 +7,5 @@ build/
 github-link.md
 github-link.pdf
 output/
+output.txt
+sorting_benchmark
