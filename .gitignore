@@ -1,3 +1,4 @@
+.gitignore
 MPI_Project_Sorting.pdf
 checks.json
 github-link.txt
@@ -10,3 +11,7 @@ output/
 output.txt
 sorting_benchmark
 sorting_benchmark_10-100M/
+.DS_Store
+.latexmkrc
+A_Comparative_Study_of_Sorting_Algorithms.pdf
+Reviews/
